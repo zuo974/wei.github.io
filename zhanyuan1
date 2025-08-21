@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战远青少年心理成长基地 - 专项干预计划</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a4b8c;
+            --primary-dark-blue: #0f2e5c;
+            --secondary-green: #2a6e3f;
+            --accent-orange: #e67e22;
+            --accent-light-orange: #f39c12;
+            --light-gray: #f5f7f9;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #2d3748;
+            --text-color: #444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            padding-top: 80px;
+            font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        .container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            top: 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 5%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--accent-orange);
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-orange);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* 封面部分 */
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.85), rgba(26, 75, 140, 0.9)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80') center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 80px 10% 60px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .hero-cta {
+            margin-top: 40px;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            margin: 25px auto;
+            animation: expandWidth 1s ease 0.9s forwards;
+            width: 0;
+        }
+        
+        /* 内容区块 */
+        .section {
+            padding: 100px 10%;
+            background-color: white;
+        }
+        
+        .section-dark {
+            background-color: #f0f4f8;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-orange);
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+        }
+        
+        .problem-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .problem-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 35px 30px;
+            width: 100%;
+            max-width: 350px;
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .problem-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--accent-orange), var(--primary-blue));
+            transition: var(--transition);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .problem-card:hover:before {
+            height: 100%;
+        }
+        
+        .problem-card i {
+            font-size: 3rem;
+            color: var(--secondary-green);
+            margin-bottom: 25px;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .problem-card:hover i {
+            transform: scale(1.1);
+            color: var(--accent-orange);
+        }
+        
+        .problem-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* 解决方案部分 */
+        .solution {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin: 50px 0;
+        }
+        
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .solution-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .solution-number {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .solution-content {
+            flex: 1;
+        }
+        
+        /* 成效部分 */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .result-item {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+            color: white;
+            padding: 35px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-item:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+        
+        .result-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        
+        .result-item:hover:before {
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+        
+        .result-item i {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-orange);
+            display: block;
+        }
+        
+        .result-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 流程部分 */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--medium-gray);
+            z-index: 1;
+        }
+        
+        .step {
+            background-color: white;
+            border-left: 5px solid var(--accent-orange);
+            padding: 30px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: inline-block;
+            background: var(--light-gray);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+        }
+        
+        /* 数据统计部分 */
+        .stats-section {
+            background: linear-gradient(rgba(26, 75, 140, 0.9), rgba(26, 75, 140, 0.85)), url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80') center/cover no-repeat;
+            padding: 80px 10%;
+            text-align: center;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-orange);
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* 行动号召 */
+        .cta-section {
+            background: linear-gradient(rgba(26, 75, 140, 0.88), rgba(26, 75, 140, 0.92)), url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80') center/cover no-repeat;
+            padding: 100px 10%;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: white;
+            border: 2px solid var(--accent-orange);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* 二维码部分 */
+        .qr-code {
+            background: white;
+            width: 180px;
+            height: 180px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 15px;
+            transition: var(--transition);
+        }
+        
+        .qr-code:hover {
+            transform: scale(1.05);
+        }
+        
+        .qr-code img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* 底部 */
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 70px 10% 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            margin: 30px 0;
+            line-height: 1.8;
+        }
+        
+        .belief-statement {
+            font-style: italic;
+            margin: 40px 0;
+            color: var(--accent-orange);
+            font-size: 1.4rem;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-orange);
+            padding-left: 20px;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 80px 5%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .hero {
+                min-height: 70vh;
+                padding: 60px 5% 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 70px 5%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .solution-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .solution-number {
+                align-self: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 80px;
+            }
+        }
+        
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <header id="header">
+            <div class="logo">
+                <i class="fas fa-mountain logo-icon"></i>
+                <span class="logo-text">战远成长基地</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#program">项目介绍</a></li>
+                <li><a href="#process">流程</a></li>
+                <li><a href="#results">成效</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- 封面部分 -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>当传统咨询陷入僵局，为深度退行与长期困扰的青少年提供突破性成长路径</h1>
+                <div class="divider"></div>
+                <p class="hero-subtitle">战远专项干预计划：打破僵局，实现临界突破</p>
+                
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">立即咨询</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 致咨询师部分 -->
+        <section class="section" id="about">
+            <h2 class="section-title">致心理咨询师同仁</h2>
+            <p class="section-intro">我们深知，您在工作中偶尔会遇到这样的案例：来访者家庭投入了长期的时间与情感，进行了持续的心理咨询，但收效甚微。孩子可能陷入严重的<strong>行为退行</strong>——情绪失控、自我封闭、拒绝社交、甚至无法维持基本的生活作息。</p>
+            
+            <p class="section-intro">孩子的"停滞"并非因为您的专业能力不足，而是因为：</p>
+            
+            <div class="problem-list">
+                <div class="problem-card animate">
+                    <i class="fas fa-clock"></i>
+                    <h3>干预剂量不足</h3>
+                    <p>每周1小时的咨询，难以对抗每周167小时负面环境和内在模式的侵蚀。</p>
+                </div>
+                
+                <div class="problem-card animate delay-1">
+                    <i class="fas fa-home"></i>
+                    <h3>环境持续触发</h3>
+                    <p>原有的家庭或学校环境不断激活孩子的旧有创伤和防御模式，使改变无法落地。</p>
+                </div>
+                
+                <div class="problem-card animate delay-2">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>缺乏系统支持</h3>
+                    <p>改变仅靠孩子和个人咨询师，缺乏一个全天候的支持系统来承载和巩固新的行为模式。</p>
+                </div>
+            </div>
+            
+            <p class="section-intro">战远专项计划，正是为您这样的<strong>复杂、棘手的长期个案</strong>所设计。我们提供一种 <strong>"高剂量、沉浸式、系统性"</strong> 的干预体验，旨在打破僵局，为深度退行的青少年创造一个真正能促成转变的临界空间。</p>
+        </section>
+
+        <!-- 专项计划核心 -->
+        <section class="section section-dark" id="program">
+            <h2 class="section-title">专项计划核心：打破僵局，实现临界突破</h2>
+            <p class="section-intro">我们专注于接纳那些让家长和咨询师感到"束手无策"的青少年，特别是：</p>
+            
+            <div class="problem-list">
+                <div class="problem-card animate">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>长期咨询但改善有限</h3>
+                    <p>已持续接受心理咨询半年以上，但核心问题未见显著改善。</p>
+                </div>
+                
+                <div class="problem-card animate delay-1">
+                    <i class="fas fa-bed"></i>
+                    <h3>处于明显行为退行阶段</h3>
+                    <p>长期辍学居家、昼夜颠倒、几乎不与家人交流、自理能力下降。</p>
+                </div>
+                
+                <div class="problem-card animate delay-2">
+                    <i class="fas fa-door-open"></i>
+                    <h3>"咨询室有效，回家无效"</h3>
+                    <p>在咨询室内能有良好洞察，但一旦回归原有环境，所有改变迅速瓦解。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 解决方案 -->
+        <section class="section">
+            <h2 class="section-title">为何我们能解决"长期无效"的难题？</h2>
+            
+            <div class="solution">
+                <div class="solution-item animate">
+                    <div class="solution-number">1</div>
+                    <div class="solution-content">
+                        <h3>【高剂量沉浸式干预】—— 创造改变必需的"剂量"</h3>
+                        <p>不是"谈话"，而是"体验与重构"：孩子将在至少8周的时间内，完全沉浸在一个被精心设计、充满正向反馈和支持的环境里。每天通过个体咨询、团体动力、正念练习、体能挑战、艺术表达、自然疗愈等多种渠道，接收高密度的良性干预信号。</p>
+                        <p>效果：这种强度能有效打破原有的顽固心理防御，让新的认知和行为模式有机会被大量重复和内化。</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item animate delay-1">
+                    <div class="solution-number">2</div>
+                    <div class="solution-content">
+                        <h3>【环境隔离与系统重建】—— 移除旧触发器，安装新系统</h3>
+                        <p>按下"暂停键"：暂时的环境隔离不是为了惩罚，而是为了保护。它将孩子从持续引发焦虑和冲突的原有刺激中暂时分离，为神经系统和情绪系统提供一个宝贵的"休养生息"窗口。</p>
+                        <p>构建"模拟理想社区"：在这里，一切社交规则、情绪表达、问题解决方式都被心理导师重新塑造。孩子将在一个安全且有边界的环境中，学习并练习如何建立健康的人际关系、如何表达需求、如何应对挫折。</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item animate delay-2">
+                    <div class="solution-number">3</div>
+                    <div class="solution-content">
+                        <h3>【家庭系统同步重塑】—— 确保改变回家后不消失</h3>
+                        <p>退行是家庭的镜子：我们视孩子的退行行为为家庭系统需要改变的强烈信号。因此，强制性的家庭治疗和家长工作坊是本计划不可分割的部分。</p>
+                        <p>与您协同工作：我们将您视为首席顾问。入校前，我们会详细研读您的案例概念化报告；干预中，我们会定期向您汇报进展，并邀请您参与家庭治疗单元；离校前，我们将与您共同召开"回归准备会"，确保干预成果能平稳过渡到您后续的咨询中。我们是您的延伸，而非替代。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计数据 -->
+        <section class="stats-section">
+            <h2 class="section-title">我们的成效数据</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item animate">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-text">情绪功能显著改善</div>
+                </div>
+                
+                <div class="stat-item animate delay-1">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-text">行为功能恢复正常</div>
+                </div>
+                
+                <div class="stat-item animate delay-2">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-text">家庭关系得到修复</div>
+                </div>
+                
+                <div class="stat-item animate delay-1">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-text">成功回归正常生活</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 疗效见证 -->
+        <section class="section section-dark" id="results">
+            <h2 class="section-title">疗效见证：我们从哪里看到改变？</h2>
+            
+            <div class="results-grid">
+                <div class="result-item animate">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>情绪功能改善</h3>
+                    <p>从持续的情绪风暴或麻木中走出，情绪调节能力提升，能更识别和用语言表达内心感受。</p>
+                </div>
+                
+                <div class="result-item animate delay-1">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>行为功能恢复</h3>
+                    <p>生活作息规律化，自我照顾能力恢复，开始能承担基本责任。</p>
+                </div>
+                
+                <div class="result-item animate delay-2">
+                    <i class="fas fa-fire"></i>
+                    <h3>动力系统重启</h3>
+                    <p>开始展现出对真实世界的好奇心与参与感，而不再完全依赖虚拟世界。</p>
+                </div>
+                
+                <div class="result-item animate delay-1">
+                    <i class="fas fa-handshake"></i>
+                    <h3>关系修复</h3>
+                    <p>与家人的沟通从对抗、逃避转变为尝试对话；在团体中开始学习建立健康的同伴关系。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 流程部分 -->
+        <section class="section" id="process">
+            <h2 class="section-title">严谨的准入与合作流程</h2>
+            <p class="section-intro">我们深知此计划的严肃性，因此设立了严谨的准入机制：</p>
+            
+            <div class="process-steps">
+                <div class="step animate">
+                    <div class="step-number">01</div>
+                    <h3>专业转介</h3>
+                    <p>仅接受由现任心理咨询师或精神科医生推荐的个案。您需提供初步评估报告。</p>
+                </div>
+                
+                <div class="step animate delay-1">
+                    <div class="step-number">02</div>
+                    <h3>前置访谈</h3>
+                    <p>我们的临床主任将与您和家庭分别进行深入视频访谈，共同评估入校适宜性。</p>
+                </div>
+                
+                <div class="step animate delay-2">
+                    <div class="step-number">03</div>
+                    <h3>共商方案</h3>
+                    <p>基于您的专业判断和我们的评估，共同商定初步的干预目标和家庭治疗重点。</p>
+                </div>
+                
+                <div class="step animate delay-1">
+                    <div class="step-number">04</div>
+                    <h3>持续协作</h3>
+                    <p>干预期间，您可通过专属通道随时了解进展，并参与关键决策。</p>
+                </div>
+                
+                <div class="step animate delay-2">
+                    <div class="step-number">05</div>
+                    <h3>回归衔接</h3>
+                    <p>离校前2周，我们将准备详细的《成长与过渡报告》并提供1-2次联合会议。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行动号召 -->
+        <section class="cta-section" id="contact">
+            <div class="cta-content">
+                <h2>让我们共同为陷入困境的家庭，提供一次破局重生的机会</h2>
+                <p>如果您正有一位让您倍感无力却又希望竭尽全力帮助的青少年来访者，如果您认为他们需要一个更强大、更系统的环境来打破目前的退行僵局，我们邀请您，以专业合作者的身份，与我们展开对话。</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">获取转介信息表</a>
+                    <a href="#" class="btn btn-outline">预约专业咨询</a>
+                </div>
+                
+                <p>请扫描下方二维码，添加【专业合作通道】</p>
+                
+                <div class="qr-code">
+                    <div style="text-align: center;">
+                        <div style="font-size: 14px; margin-bottom: 8px;">专业合作通道</div>
+                        <div style="width: 120px; height: 120px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 12px; color: #333;">微信二维码</div>
+                        <div style="font-size: 12px; margin-top: 8px;">微信扫一扫</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部 -->
+        <footer>
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-mountain logo-icon"></i>
+                    <span class="logo-text">战远成长基地</span>
+                </div>
+                
+                <p class="belief-statement">我们坚信：唯有系统，才能击败系统。每一个孩子都值得被理解，每一个家庭都值得拥有希望。</p>
+                
+                <div class="contact-info">
+                    <p>战远青少年心理成长基地 · 专项干预计划</p>
+                    <p>咨询专线: 400-XXX-XXXX (转"专业合作")</p>
+                    <p>官方网站: www.zhan-yuan.com</p>
+                    <p>邮箱: contact@zhan-yuan.com</p>
+                </div>
+                
+                <div class="copyright">
+                    <p>© 2023 战远青少年心理成长基地. 版权所有.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航栏滚动效果
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // 移动菜单切换
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // 滚动动画
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // 关闭移动菜单
+                        navLinks.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
